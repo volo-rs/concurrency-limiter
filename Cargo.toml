@@ -1,0 +1,15 @@
+[package]
+name = "volo-concurrency-limiter"
+version = "0.1.0"
+edition = "2021"
+
+[features]
+# Currently there are nothing to do with the "volo-thrift" feature.
+# We still advise users to use the feature flag, to reduce the possibility of breaking changes in future upgrades.
+volo-grpc = ["dep:volo-grpc"]
+volo-thrift = ["dep:volo-thrift"]
+
+[dependencies]
+volo = "*"
+volo-grpc = { version = "*", optional = true }
+volo-thrift = { version = "*", optional = true }
