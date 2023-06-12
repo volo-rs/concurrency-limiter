@@ -22,8 +22,6 @@ volo-concurrency-limiter = { version = "*", features = ["volo-grpc"] }
 
 Add the middleware layer to the server, which looks like this:
 ```rust{.ignore}
-#![feature(type_alias_impl_trait)]
-
 use std::net::SocketAddr;
 
 use volo_grpc::server::{Server, ServiceBuilder};
@@ -57,8 +55,6 @@ volo-concurrency-limiter = { version = "*", features = ["volo-thrift"] }
 
 Add the middleware layer to the server, which looks like this:
 ```rust{.ignore}
-#![feature(type_alias_impl_trait)]
-
 use std::net::SocketAddr;
 
 use volo_example::{S};
