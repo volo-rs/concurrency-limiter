@@ -2,6 +2,9 @@
 name = "volo-concurrency-limiter"
 version = "0.1.0"
 edition = "2021"
+authors = ["Volo Contributors <volo@cloudwego.io>"]
+repository = "https://github.com/volo-rs/concurrency-limiter"
+documentation = "https://docs.rs/volo-concurrency-limiter"
 description = "A concurrency limiter for Volo."
 license = "MIT OR Apache-2.0"
 
