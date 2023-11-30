@@ -15,6 +15,6 @@ volo-grpc = ["dep:volo-grpc"]
 volo-thrift = ["dep:volo-thrift"]
 
 [dependencies]
-volo = "*"
-volo-grpc = { version = "*", optional = true }
-volo-thrift = { version = "*", optional = true }
+volo = "0.8"
+volo-grpc = { version = "0.8", optional = true }
+volo-thrift = { version = "0.8", optional = true }
