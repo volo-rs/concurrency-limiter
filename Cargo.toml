@@ -2,6 +2,8 @@
 name = "volo-concurrency-limiter"
 version = "0.1.0"
 edition = "2021"
+description = "A concurrency limiter for Volo."
+license = "MIT OR Apache-2.0"
 
 [features]
 # Currently there are nothing to do with the "volo-thrift" feature.
