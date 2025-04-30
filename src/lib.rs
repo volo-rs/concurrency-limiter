@@ -55,21 +55,33 @@ where
     where
         's: 'cx,
     {
-        let curr = self
-            .status
-            .current
-            .fetch_add(1, std::sync::atomic::Ordering::Relaxed);
-
-        if curr > self.status.limit {
-            self.status
+        loop {
+            let curr = self
+                .status
                 .current
-                .fetch_sub(1, std::sync::atomic::Ordering::Relaxed);
+                .load(std::sync::atomic::Ordering::Relaxed);
 
-            return Err(ConcurrencyLimitError {
-                limit: self.status.limit,
-                current: curr,
+            if curr >= self.status.limit {
+                return Err(ConcurrencyLimitError {
+                    limit: self.status.limit,
+                    current: curr,
+                }
+                .into());
             }
-            .into());
+
+            if self
+                .status
+                .current
+                .compare_exchange(
+                    curr,
+                    curr + 1,
+                    std::sync::atomic::Ordering::Relaxed,
+                    std::sync::atomic::Ordering::Relaxed,
+                )
+                .is_ok()
+            {
+                break;
+            }
         }
 
         let res = self.inner.call(cx, req).await;
